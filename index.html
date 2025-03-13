@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, Саня!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: white;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .card {
+            width: 320px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2em;
+        }
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .gallery {
+            width: 80%;
+            max-width: 500px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery img, .gallery video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Это изменяет поведение видео, чтобы оно было видно целиком */
+            display: none;
+            border-radius: 10px;
+        }
+
+        .gallery img.active, .gallery video.active {
+            display: block;
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: white;
+            color: #ff4b2b;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4b2b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>С Днём Рождения, Саня! 🎉</h1>
+
+        <div class="card">
+            <p>
+                Дорогой Саня! <br><br>
+                Поздравляю тебя с днём рождения! 🎉 <br>
+                Желаю счастья, здоровья, успехов! <br>
+                Пусть мечты сбываются, <br>
+                друзья поддерживают, <br>
+                и чтоб хуй стоял! 🍆🔥
+            </p>
+        </div>
+
+        <div class="gallery-container">
+            <h2 style="color: white;">📸 Воспоминания 📸</h2>
+            <div class="gallery">
+                <img src="photo1.jpg" class="active">
+                <img src="photo2.jpg">
+                <img src="photo3.jpg">
+                <img src="photo4.jpg">
+                <img src="photo5.jpg">
+                <img src="photo6.jpg">
+                <img src="photo7.jpg"> <!-- Добавлена 7-я фотография -->
+                <img src="photo8.jpg"> <!-- Добавлена 8-я фотография -->
+                <img src="photo9.jpg"> <!-- Добавлена 9-я фотография -->
+                <video class="active" controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+
+            <div class="buttons">
+                <button onclick="prevPhoto()">⬅ Назад</button>
+                <button onclick="nextPhoto()">Вперёд ➡</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentPhoto = 0;
+        const photos = document.querySelectorAll(".gallery img, .gallery video");function showPhoto(index) {
+            photos.forEach((media, i) => {
+                media.classList.toggle("active", i === index);
+            });
+        }
+
+        function prevPhoto() {
+            currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
+            showPhoto(currentPhoto);
+        }
+
+        function nextPhoto() {
+            currentPhoto = (currentPhoto + 1) % photos.length;
+            showPhoto(currentPhoto);
+        }
+    </script>
+
+</body>
+</html>
